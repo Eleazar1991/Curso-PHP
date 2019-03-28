@@ -1,0 +1,56 @@
+#lateral{
+    width: 20%;
+    min-height: 500px;
+    float: left;
+    margin-top:20px;
+    margin-left: 10px;
+}
+
+#lateral .block_aside{
+    display:block;
+    width: 90%;
+    margin: 5px auto;
+    padding: 10px;
+}
+
+#lateral h3{
+    width: 100px;
+    color: #222;
+    width: 100%;
+    text-align:center;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size:16px;
+    font-weight: bold;
+    background: #e1e1e1;
+    border-bottom: 2px solid #01b1ea;
+}
+
+#login label{
+    margin-left:10px;
+}
+
+#login input[type='submit']{
+    margin: 0px auto;
+    text-align: center;
+    margin-top:10px;
+}
+#login input[type='submit']:hover{
+    background: #222;
+    border: 1px solid rgb(7, 7, 7);
+}
+
+#lateral ul{
+    margin-top:10px;
+    margin-bottom: 20px;
+}
+
+#lateral ul li{
+    list-style: none;
+    margin-left: 20px;
+}
+#lateral input[type="submit"]{
+    margin-bottom:15px;
+}
