@@ -1,0 +1,32 @@
+    {#Funciones Predefinidas#}
+    <h1>Funciones Predefinidas</h1>
+    {{ min([9,11,6,99,2]) }} <br>
+    {{ random(animales) }} <br>
+    {{ max([9,11,6,99,2]) }} <br>
+    {% for i in range(0,100) %}
+        {{i}} ,
+    {% endfor %}
+    <br>
+    {% for i in range(0,100,5) %}
+        {{i}} ,
+    {% endfor %}
+    <br>
+    {{ nombre }}
+    <br>
+    {#Filtros predefinidos#}
+    {{animales|length}}<br>
+
+    {% set email = '   eleazar.yio@gmail.com    ' %}
+    {{ dump(email) }}<br>
+    {{ email }}<br>
+    {{ dump(email|trim) }}<br>
+    {{ email|trim }}<br>
+    {{ dump(email|trim|upper) }}<br>
+    {{ dump(email|trim|lower) }}<br>
+
+    {#Extensiones#}
+    <h1>Extensiones personalizadas</h1>
+    {#Extensiones como funcion#}
+    {{ multiplicar_function(5)|raw }}
+    {#Extensiones como filtro#}
+    {{ 5|multiplicar|raw }}

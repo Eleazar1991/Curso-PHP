@@ -1,4 +1,63 @@
-<h1>{{ title }}</h1>
+{% extends 'layouts/master.html.twig' %}
 
-<h2>Tu nombre es: {{ nombre }}</h2>
-<h3>Tus apellidos son: {{ apellidos }}</h3>
+{% block titulo %} Animales {% endblock %}
+
+{% block cabecera %}
+    {{ parent() }}
+    <h1>{{title}}</h1>
+{% endblock %}
+
+{#Comentario#}
+
+{# {% block contenido %}
+    <h1>{{ title }}</h1>
+    <h2>Tu nombre es: {{ nombre }}</h2>
+    <h3>Tus apellidos son: {{ apellidos }}</h3>
+{% endblock %} #}
+
+{% block contenido %}
+    {% set perro = "Chihuahua" %}
+    <h4>{{perro}}</h4>
+
+    {#Arrays#}
+    {{ dump(animales) }}
+    {{ animales[0] }}
+
+    {#Arrays Asociativos#}
+    {{ dump(perros) }}
+    {{ perros.Raza ~ ' ' ~ perros.Tipo }}
+
+    {# Condicional #}
+    <h1>Condiciones</h1>
+    {% if perros.Raza == 'Caniche' %}
+        <h1>El perro es un {{perros.Raza}}</h1>
+    {% else %}
+        <h1>No hay ningún Caniche</h1>
+    {% endif %}
+
+    {% if perros.Raza starts with 'P'%}
+        <h1>La raza del perro empieza por P</h1>
+    {% endif %}
+
+    {% if perros.Raza ends with 'll'%}
+        <h1>La raza del perro termina por ll</h1>
+    {% endif %}
+
+    {# Bucle #}
+    <h1>Bucles</h1>
+    {% if animales|length >= 0 %}
+        <ul>
+            {% for animal in animales %}
+                <li>{{ animal }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    
+    {% for i in 0..10 %}
+        {{i}} <br>
+    {% endfor %}
+    
+    {{ include('partials/funciones.html.twig') }}
+    {{ include('partials/funciones.html.twig',{'nombre':'Eleazar Pérez'}) }}
+
+{% endblock %}

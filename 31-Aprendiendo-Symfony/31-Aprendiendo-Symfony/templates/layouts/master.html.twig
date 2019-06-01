@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> {% block titulo %} Inicio {% endblock %} - "Symfony 4 Eleazar"</title>
+</head>
+<body>
+    <header>
+        {% block cabecera %}  
+            <h1>Cabecera de la plantilla</h1>
+        {% endblock %}
+    </header>
+    <hr>
+    <section id="content">
+        {% block contenido %}
+            <p>Contenido por defecto</p>
+        {% endblock %}
+    </section>
+    <hr>
+    <footer>
+        Eleazar Pérez Arencibia
+    </footer>
+</body>
+</html>
