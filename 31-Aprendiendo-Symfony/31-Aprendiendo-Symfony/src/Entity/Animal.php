@@ -4,11 +4,14 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+//Validaciones de campo
+use Symfony\Component\Validator\Constraints as Assert; 
+
 /**
  * Animales
  *
  * @ORM\Table(name="animales")
- * @ORM\Entity
+ * @ORM\Entity (repositoryClass="App\Repository\AnimalRepository")
  */
 class Animal
 {
@@ -25,6 +28,8 @@ class Animal
      * @var string
      *
      * @ORM\Column(name="tipo", type="string", length=255, nullable=false)
+     * @Assert\NotBlank
+     * @Assert\Regex("/[a-zA-Z]+/")
      */
     private $tipo;
 
@@ -32,6 +37,8 @@ class Animal
      * @var string
      *
      * @ORM\Column(name="color", type="string", length=255, nullable=false)
+     * @Assert\NotBlank
+     * @Assert\Regex("/[a-zA-Z]+/")
      */
     private $color;
 
@@ -39,12 +46,18 @@ class Animal
      * @var string
      *
      * @ORM\Column(name="raza", type="string", length=255, nullable=false)
+     * @Assert\NotBlank
+     * @Assert\Regex(
+     *      pattern="/[a-zA-Z]+/", 
+     *      message="La raza del animal no puede contener numeros"
+     *)
      */
     private $raza;
 
      /**
      * @var string
-     *
+     * @Assert\NotBlank
+     * @Assert\Regex("/[a-zA-Z]+/")
      * @ORM\Column(name="tipo_pelo", type="string", length=255, nullable=false)
      */
     private $tipo_pelo;

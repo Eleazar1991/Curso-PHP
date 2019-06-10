@@ -1,0 +1,13 @@
+<h1>Este formulario con Symfony 4</h1>
+<h2>Insertar animales</h2>
+{% for message in app.session.flashbag().get('message') %}
+     <strong> {{message}} </strong> 
+{% endfor %}
+
+{{form_start(form)}}
+{{form_widget(form)}}
+{{form_end(form)}}
+
+{{form_start(formClass)}}
+{{form_widget(formClass)}}
+{{form_end(formClass)}}
