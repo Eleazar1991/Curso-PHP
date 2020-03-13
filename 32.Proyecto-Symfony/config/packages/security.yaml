@@ -1,0 +1,52 @@
+security:
+    #cifrado de las contraseñas del registro de usuario
+    encoders:
+        App\Entity\User:
+            algorithm: bcrypt
+            cost: 4 #cifrar la contraseña 4 veces sobre si misma
+    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    providers:
+        users_in_memory: { memory: null }
+        #de donde va a conseguir el login para poder los usuarios logearse
+        proveedor:
+            entity:
+                class: App\Entity\User
+                property: email
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        main:
+            anonymous: lazy
+            provider: users_in_memory
+            #configuramos el login
+            form_login:
+                login_path: login
+                check_path: login
+                provider: proveedor
+            
+            #configuramos el logout
+            logout:
+                path: /logout
+                #cuando haga logout satisfctoriamente la ruta de destino
+                target: /
+
+            # activate different ways to authenticate
+            # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+            # https://symfony.com/doc/current/security/impersonating_user.html
+            # switch_user: true
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+
+    #Para controlar el acceso si el controlador esta logueado
+    access_control:
+        - { path: ^/tarea, roles: ROLE_USER }
+        - { path: ^/tareas, roles: ROLE_USER }
+        - { path: ^/crear-tarea, roles: ROLE_USER }
+        - { path: ^/mis-tareas, roles: ROLE_USER }
+        - { path: ^/editar-tarea, roles: ROLE_USER }
+        - { path: ^/borrar-tarea, roles: ROLE_USER }
+        
+        # - { path: ^/profile, roles: ROLE_USER }
